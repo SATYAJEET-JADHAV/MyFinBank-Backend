@@ -1,0 +1,140 @@
+package com.myfinbank.loan.entity;
+
+import jakarta.persistence")import jakarta.persistence.*;
+public class LoanApplication {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long loanId;
+
+    @Column(nullable = false)
+    private Long customerId;
+
+    @Column(nullable = false, length = 50)
+    private String vehicleType;
+
+    @Column(nullable = false, precision = 12, scale = 2)
+    private BigDecimal vehiclePrice;
+
+    @Column(nullable = false, precision = 12, scale = 2)
+    private BigDecimal loanAmount;
+
+    @Column(nullable = false, precision = 5, scale = 2)
+    private BigDecimal interestRate;
+
+    @Column(nullable = false)
+    private Integer tenureMonths;
+
+    @Column(nullable = false, precision = 12, scale = 2)
+    private BigDecimal emiAmount;
+
+    @Column(nullable = false, length = 30)
+    private String status;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    public LoanApplication() {
+    }
+
+    @PrePersist
+    public void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+
+        if (this.status == null || this.status.isBlank()) {
+            this.status = "PENDING";
+        }
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    public Long getLoanId() {
+        return loanId;
+    }
+
+    public void setLoanId(Long loanId) {
+        this.loanId = loanId;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    public BigDecimal getVehiclePrice() {
+        return vehiclePrice;
+    }
+
+    public void setVehiclePrice(BigDecimal vehiclePrice) {
+        this.vehiclePrice = vehiclePrice;
+    }
+
+    public BigDecimal getLoanAmount() {
+        return loanAmount;
+    }
+
+    public void setLoanAmount(BigDecimal loanAmount) {
+        this.loanAmount = loanAmount;
+    }
+
+    public BigDecimal getInterestRate() {
+        return interestRate;
+    }
+
+    public void setInterestRate(BigDecimal interestRate) {
+        this.interestRate = interestRate;
+    }
+
+    public Integer getTenureMonths() {
+        return tenureMonths;
+    }
+
+    public void setTenureMonths(Integer tenureMonths) {
+        this.tenureMonths = tenureMonths;
+    }
+
+    public BigDecimal getEmiAmount() {
+        return emiAmount;
+    }
+
+    public void setEmiAmount(BigDecimal emiAmount) {
+        this.emiAmount = emiAmount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+}
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@Entity
