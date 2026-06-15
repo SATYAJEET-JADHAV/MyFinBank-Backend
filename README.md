@@ -1,430 +1,540 @@
+You are a Principal Frontend Architect, Senior Angular Engineer, UX Designer, and Fintech Product Designer.
 
-Keep the existing architecture and extend it with the following business features.
+Generate a COMPLETE, PRODUCTION-READY Angular 20 application as a downloadable ZIP file.
 
----
+Project Name:
+MYFIN BANK
 
-1. ADD CUSTOMER SERVICE MICROSERVICE
+Domain:
+Vehicle Financing & Loan Lifecycle Management Platform
 
----
+IMPORTANT:
+Generate FULL SOURCE CODE, not explanations.
+Return a complete Angular project that can be opened directly in VS Code and run using:
 
-Create a new microservice:
-
-customer-service
-
-Register with Eureka.
-
-Create separate MySQL database:
-
-myfin_customer_db
-
-Implement Customer Profile Management.
-
-CustomerProfile Entity:
-
-* id
-* userId
-* firstName
-* lastName
-* dateOfBirth
-* gender
-* email
-* mobileNumber
-* panNumber
-* aadhaarNumber
-* occupation
-* employerName
-* monthlyIncome
-* address
-* city
-* state
-* pincode
-* creditScore
-* kycStatus
-* createdAt
-* updatedAt
-
-KycStatus Enum:
-
-* PENDING
-* VERIFIED
-* REJECTED
-
-REST APIs:
-
-POST /api/customers
-
-GET /api/customers/{id}
-
-GET /api/customers/user/{userId}
-
-PUT /api/customers/{id}
-
-PUT /api/customers/{id}/verify
-
-GET /api/customers
-
-Implement DTOs, validation, service layer, repository layer, global exception handling and Swagger documentation.
+npm install
+ng serve
 
 ---
 
-2. ROLE BASED ACCESS CONTROL
+## TECH STACK
+
+Angular 20+
+
+TypeScript
+
+Standalone Components
+
+Angular Material
+
+Tailwind CSS
+
+RxJS
+
+Chart.js
+
+Angular CDK
+
+JWT Authentication
+
+Responsive Design
+
+Dark/Light Theme Support
+
+Role Based Access Control
+
+Lazy Loaded Routes
+
+Route Guards
+
+HTTP Interceptors
+
+Environment Configuration
+
+Production Build Ready
 
 ---
 
-Extend existing Auth Service.
+## DESIGN REQUIREMENTS
+
+The UI must look comparable to modern fintech products.
+
+Take visual inspiration from:
+
+* CRED
+* Razorpay Dashboard
+* Revolut
+* Nubank
+* SoFi
+* Stripe Dashboard
+* Zerodha Console
+
+DO NOT generate a basic CRUD admin panel.
+
+The UI should be:
+
+* Modern
+* Premium
+* Banking-grade
+* Responsive
+* Animated
+* Clean
+* Minimalistic
+* Enterprise level
+
+Use:
+
+* Glassmorphism
+* Gradients
+* Smooth animations
+* Modern cards
+* Modern tables
+* Interactive charts
+* Beautiful onboarding experience
+
+Design should feel like a real fintech startup product.
+
+---
+
+## COLOR SYSTEM
+
+Primary:
+#0F172A
+
+Secondary:
+#1E3A8A
+
+Accent:
+#2563EB
+
+Success:
+#10B981
+
+Warning:
+#F59E0B
+
+Danger:
+#EF4444
+
+Background:
+#F8FAFC
+
+Dark Background:
+#020617
+
+---
+
+## BACKEND INTEGRATION
+
+The backend already exists.
+
+API Gateway:
+
+http://localhost:8070
+
+Services:
+
+Auth Service
+Customer Service
+Loan Service
+Vehicle Service
+EMI Service
+Workflow Service
+
+Create Angular services for all APIs.
+
+Use environment variables.
+
+---
+
+## AUTHENTICATION
+
+Features:
+
+Login
+
+Registration
+
+Forgot Password UI
+
+JWT Storage
+
+Auto Login
+
+Logout
+
+Refresh Token Ready
+
+Role Based Navigation
 
 Roles:
 
 ROLE_CUSTOMER
+
 ROLE_LOAN_OFFICER
+
 ROLE_MANAGER
+
 ROLE_ADMIN
 
-JWT should contain role information.
+Implement:
 
-Restrict APIs appropriately.
+Auth Guard
 
-Examples:
+Role Guard
 
-Customer:
-
-* Manage profile
-* Apply for loan
-* View EMI schedule
-
-Loan Officer:
-
-* Review applications
-* Verify customer KYC
-
-Manager:
-
-* Approve loans
-* Reject loans
-
-Admin:
-
-* Manage users
+HTTP Interceptor
 
 ---
 
-3. VEHICLE MANAGEMENT
+## LAYOUTS
+
+Create:
+
+1. Auth Layout
+
+2. Dashboard Layout
+
+Dashboard Layout:
+
+Top Navbar
+
+Collapsible Sidebar
+
+Notification Area
+
+User Profile Menu
+
+Breadcrumbs
+
+Responsive Mobile Navigation
 
 ---
 
-Inside Loan Service add Vehicle Entity.
+## CUSTOMER PORTAL
 
-Vehicle:
+Pages:
 
-* id
-* make
-* model
-* variant
-* year
-* vehicleType
-* exShowroomPrice
-* onRoadPrice
-* status
+Dashboard
 
-VehicleStatus:
+Profile
 
-* ACTIVE
-* INACTIVE
+My Loans
 
-Vehicle APIs:
+Apply Loan
 
-POST /api/vehicles
+EMI Schedule
 
-PUT /api/vehicles/{id}
+Documents
 
-DELETE /api/vehicles/{id}
+Settings
 
-GET /api/vehicles
+Dashboard should display:
 
-GET /api/vehicles/{id}
+Active Loans
 
-Seed sample data:
+Pending Loans
+
+Credit Score
+
+Upcoming EMI
+
+Quick Actions
+
+Recent Activities
+
+Charts
+
+---
+
+## LOAN APPLICATION WIZARD
+
+Create a multi-step application wizard.
+
+Step 1
+
+Personal Information
+
+Step 2
+
+Vehicle Selection
+
+Step 3
+
+Loan Details
+
+Step 4
+
+Document Upload
+
+Step 5
+
+Review & Submit
+
+Use Angular Material Stepper.
+
+---
+
+## VEHICLE CATALOG
+
+Display vehicles as modern cards.
+
+Show:
+
+Image
+
+Model
+
+Price
+
+EMI Estimate
+
+Apply Button
+
+Search
+
+Filtering
+
+Sorting
+
+Pagination
+
+Sample Vehicles:
 
 Honda City
+
 Hyundai Creta
+
 Tata Nexon
+
 Mahindra XUV700
+
 Maruti Brezza
 
 ---
 
-4. LOAN APPLICATION ENHANCEMENT
+## EMI CALCULATOR
+
+Interactive calculator.
+
+Input:
+
+Loan Amount
+
+Interest Rate
+
+Tenure
+
+Display:
+
+Monthly EMI
+
+Principal
+
+Interest
+
+Total Payable
+
+Use charts.
 
 ---
 
-Update existing Loan Application.
+## LOAN TRACKING
 
-LoanApplication:
+Visual progress tracker.
 
-* id
-* customerId
-* vehicleId
-* vehiclePrice
-* downPayment
-* loanAmount
-* interestRate
-* tenureMonths
-* status
-* remarks
-* createdAt
-* updatedAt
+Statuses:
 
-LoanStatus:
+DRAFT
 
-* DRAFT
-* SUBMITTED
-* UNDER_REVIEW
-* APPROVED
-* REJECTED
-* DISBURSED
-* CLOSED
+SUBMITTED
 
-Loan Service must use OpenFeign to fetch customer details from Customer Service.
+UNDER_REVIEW
 
-Store only customerId.
+APPROVED
 
-Do not duplicate customer information.
+REJECTED
+
+DISBURSED
+
+CLOSED
+
+Use timeline UI.
 
 ---
 
-5. LOAN ELIGIBILITY ENGINE
+## DOCUMENT MANAGEMENT
+
+Drag and Drop Upload
+
+Preview
+
+Progress Bar
+
+Document Categories:
+
+PAN
+
+AADHAAR
+
+DRIVING_LICENSE
+
+SALARY_SLIP
+
+BANK_STATEMENT
+
+VEHICLE_QUOTATION
 
 ---
 
-Create eligibility validation before loan creation.
+## LOAN OFFICER DASHBOARD
 
-Rules:
+Pending Applications
 
-1. Monthly income >= 25000
+Customer Verification
 
-2. Age between 21 and 60
+Loan Review
 
-3. Credit score >= 650
+Eligibility Analysis
 
-4. Loan amount should not exceed 80% of vehicle price
+Approval Recommendations
+
+---
+
+## MANAGER DASHBOARD
+
+Approval Queue
+
+Loan Approval
+
+Loan Rejection
+
+Loan Statistics
+
+Performance Metrics
+
+---
+
+## ADMIN DASHBOARD
+
+System Overview
+
+Users
+
+Roles
+
+Analytics
+
+Reports
+
+Audit Monitoring
+
+---
+
+## CHARTS & ANALYTICS
+
+Use Chart.js
 
 Create:
 
-LoanEligibilityService
+Loan Trends
 
-EligibilityResponse:
+Approval Rates
 
-* eligible
-* reason
-* maxEligibleAmount
+EMI Collection
 
-API:
+Customer Growth
 
-POST /api/loans/check-eligibility
+Portfolio Overview
 
 ---
 
-6. APPROVAL WORKFLOW ENHANCEMENT
+## UX FEATURES
+
+Skeleton Loading
+
+Toast Notifications
+
+Error Handling
+
+Empty States
+
+Confirmation Dialogs
+
+Search Everywhere
+
+Keyboard Accessibility
+
+Mobile Responsive Design
 
 ---
 
-Enhance Workflow Service.
+## FILE STRUCTURE
 
-Create ApprovalHistory entity.
+Generate complete project structure:
 
-Fields:
+src/
 
-* id
-* loanId
-* action
-* performedBy
-* remarks
-* timestamp
+app/
 
-Actions:
+core/
 
-* SUBMITTED
-* REVIEWED
-* APPROVED
-* REJECTED
-* DISBURSED
+shared/
 
-Workflow APIs:
+layouts/
 
-POST /api/workflow/review
+features/
 
-POST /api/workflow/approve
+assets/
 
-POST /api/workflow/reject
+environments/
 
-GET /api/workflow/history/{loanId}
+Include:
 
----
+Services
 
-7. EMI SERVICE ENHANCEMENT
+Models
 
----
+Interfaces
 
-Generate EMI schedule after loan approval.
+DTOs
 
-EMISchedule:
+Guards
 
-* id
-* loanId
-* installmentNumber
-* principalAmount
-* interestAmount
-* emiAmount
-* dueDate
-* paymentStatus
+Interceptors
 
-PaymentStatus:
+Utilities
 
-* PENDING
-* PAID
-* OVERDUE
-
-API:
-
-GET /api/emi/{loanId}
-
-POST /api/emi/generate/{loanId}
-
-Use reducing balance EMI formula.
+Theme Management
 
 ---
 
-8. DOCUMENT MANAGEMENT
+## DELIVERABLE
 
----
+Generate a COMPLETE Angular project ZIP.
 
-Inside Loan Service add document handling.
+Include:
 
-LoanDocument:
+package.json
 
-* id
-* loanId
-* documentType
-* fileName
-* filePath
-* uploadDate
+angular.json
 
-Document Types:
+tailwind.config.js
 
-* PAN
-* AADHAAR
-* DRIVING_LICENSE
-* SALARY_SLIP
-* BANK_STATEMENT
-* VEHICLE_QUOTATION
+all components
 
-Store files locally:
+all routes
 
-uploads/
+all services
 
-Create APIs:
+all models
 
-POST /api/documents/upload
+all pages
 
-GET /api/documents/{id}
+all styles
 
-GET /api/documents/loan/{loanId}
+all assets placeholders
 
----
+README.md
 
-9. CUSTOMER DASHBOARD APIs
-
----
-
-Create APIs:
-
-GET /api/dashboard/my-profile
-
-GET /api/dashboard/my-loans
-
-GET /api/dashboard/my-emi
-
-GET /api/dashboard/loan/{loanId}
-
----
-
-10. INTER-SERVICE COMMUNICATION
-
----
-
-Implement OpenFeign clients:
-
-Loan Service -> Customer Service
-
-Workflow Service -> Loan Service
-
-EMI Service -> Loan Service
-
-Use service discovery via Eureka.
-
----
-
-11. DATABASE DESIGN
-
----
-
-Separate databases:
-
-myfin_auth_db
-
-myfin_customer_db
-
-myfin_loan_db
-
-myfin_workflow_db
-
-myfin_emi_db
-
----
-
-12. CODE QUALITY REQUIREMENTS
-
----
-
-Use:
-
-* Controller Layer
-* Service Layer
-* Repository Layer
-* DTO Pattern
-* Mapper Classes
-* Validation
-* Global Exception Handling
-* OpenFeign
-* Spring Security
-* JWT Authentication
-* Lombok
-* Swagger/OpenAPI
-
-Follow clean architecture and enterprise coding standards.
-
----
-
-13. OUTPUT REQUIREMENT
-
----
-
-Generate complete source code changes for all services.
-
-Provide:
-
-* Updated folder structure
-* Entities
-* DTOs
-* Controllers
-* Services
-* Repositories
-* Security configuration
-* Feign clients
-* SQL schema
-* API contracts
-* application.yml files
-* Swagger configuration
-
-The generated code must integrate seamlessly with the existing MYFIN BANK microservices project.
-"# myFinBankBackend_1" 
+The output must be a professional fintech-grade frontend that looks like a real banking product and is ready for deployment after connecting backend endpoints.
